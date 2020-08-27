@@ -130,3 +130,33 @@ Or execute `salt-call` on minion if you are using masterless:
 ```
 $ sudo salt-call state.sls openfortivpn
 ```
+
+
+## Allow host to use VPN connections from Vagrant box
+
+Suppose that your Vagrant box IP address is `192.168.121.2`, execute the following commands on the minion:
+```
+$ sudo iptables -t nat -A POSTROUTING -s 192.168.121.2 -j MASQUERADE
+$ sudo sysctl -w net.ipv4.ip_forward=1
+```
+
+Let's say if you want to SSH to `172.168.100.64` host, execute the following `ip route` command on host:
+```
+$ sudo ip route add 172.168.0.0/16 via 192.168.121.2
+```
+
+
+## Allow other devices to use VPN connection
+
+Suppose that your minion's LAN IP address is `192.168.1.2` and the other device that you want to give VPN access is `192.168.1.10`
+
+On the minion, execute the following command:
+```
+$ sudo iptables -t nat -A POSTROUTING -s 192.168.1.10 -j MASQUERADE
+$ sudo sysctl -w net.ipv4.ip_forward=1
+```
+
+Let's say if you want to SSH to `172.168.100.64` from the other device, execute the same `ip route` command as above on the device:
+```
+$ sudo ip route add 172.168.0.0/16 via 192.168.1.2
+```
