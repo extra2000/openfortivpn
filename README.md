@@ -108,9 +108,21 @@ file_roots:
 
 Prepare your `crtfile` and `keyfile` PEM certificates as described in Section [Prepare certificates](#Prepare-certificates). Then your `crtfile` and `keyfile` PEM certificates into `/srv/formulas/openfortivpn-formula/openfortivpn/files/secrets/`.
 
-Create your SaltStack pillar file for the OpenFortiVPN as described in Section [Prepare SaltStack pillar for OpenFortiVPN](#Prepare-SaltStack-pillar-for-OpenFortiVPN), but into `/srv/pillar/openfortivpn.sls`.
+Create your SaltStack pillar file for the OpenFortiVPN as described in Section [Prepare SaltStack pillar for OpenFortiVPN](#Prepare-SaltStack-pillar-for-OpenFortiVPN), but into `/srv/pillar/openfortivpn.sls`. Then add the `openfortivpn.sls` into `/srv/pillar/top.sls`:
+```
+base:
+  '*':
+    - openfortivpn
+```
 
-Install and deploy OpenFortiVPN:
+Note that any changes to pillar also requires `$ sudo systemctl restart salt-master.service`, unless you are running on masterless.
+
+Install and deploy OpenFortiVPN via SaltStack master. Replace `MINION-ID` with your minion's ID:
+```
+$ sudo salt 'MINION-ID' state.sls openfortivpn
+```
+
+Or execute `salt-call` on minion if you are using masterless:
 ```
 $ sudo salt-call state.sls openfortivpn
 ```
