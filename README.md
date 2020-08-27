@@ -98,6 +98,14 @@ $ cd /srv/formulas/
 $ git clone --recursive https://github.com/extra2000/openfortivpn-formula.git
 ```
 
+Make sure the `/srv/formulas/openfortivpn-formula` is added into your `/etc/salt/master` or `/etc/salt/minion` for masterless. Note that any changes in `/etc/salt/master` requires `$ sudo systemctl restart salt-master.service`:
+```
+file_roots:
+  base:
+    - /srv/salt
+    - /srv/formulas/openfortivpn-formula
+```
+
 Prepare your `crtfile` and `keyfile` PEM certificates as described in Section [Prepare certificates](#Prepare-certificates). Then your `crtfile` and `keyfile` PEM certificates into `/srv/formulas/openfortivpn-formula/openfortivpn/files/secrets/`.
 
 Create your SaltStack pillar file for the OpenFortiVPN as described in Section [Prepare SaltStack pillar for OpenFortiVPN](#Prepare-SaltStack-pillar-for-OpenFortiVPN), but into `/srv/pillar/openfortivpn.sls`.
