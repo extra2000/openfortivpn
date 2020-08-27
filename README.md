@@ -160,3 +160,8 @@ Let's say if you want to SSH to `172.168.100.64` from the other machine, execute
 ```
 $ sudo ip route add 172.168.0.0/16 via 192.168.1.2
 ```
+
+If the machine is running on Microsoft Windows 10 platform, execute the following `route` command using Command Prompt running as Administrator:
+```
+> route ADD 172.168.0.0 MASK 255.255.0.0 192.168.1.2
+```
