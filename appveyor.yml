@@ -1,0 +1,21 @@
+os: Ubuntu
+platform:
+  - x64
+install:
+  - sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+  - sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
+  - sudo dpkg -i vagrant_2.2.9_x86_64.deb
+  - sudo vagrant plugin install vagrant-libvirt vagrant-scp vagrant-reload vagrant-vbguest
+  - git submodule init
+  - git submodule update
+build_script:
+  - touch salt/roots/formulas/openfortivpn-formula/openfortivpn/files/secrets/mycert.crt
+  - touch salt/roots/formulas/openfortivpn-formula/openfortivpn/files/secrets/mycert.key
+  - echo '{"openfortivpn":{"build":{"username":"vagrant"},"certificate":{"crtfile":"mycert.crt","keyfile":"mycert.key"},"server":{"host":"172.1.1.1","port":443,"certdigest":"36d91cf360b272163273f12dab5a66806895cf4328c32f29b4ddb35cdab89fb9"}}}' > salt/roots/pillar/openfortivpn.sls
+  - sudo vagrant up --provider=libvirt openfortivpn-ubuntu1804
+  - sudo vagrant ssh openfortivpn-ubuntu1804 -- sudo salt-call state.sls openfortivpn.package
+  - sudo vagrant ssh openfortivpn-ubuntu1804 -- sudo salt-call state.sls openfortivpn.config
+  - sudo vagrant ssh openfortivpn-ubuntu1804 -- sudo salt-call state.sls openfortivpn.config.clean
+  - sudo vagrant ssh openfortivpn-ubuntu1804 -- sudo salt-call state.sls openfortivpn.package.clean
+  - sudo vagrant destroy --force openfortivpn-ubuntu1804
+test: off
