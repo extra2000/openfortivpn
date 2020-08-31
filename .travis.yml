@@ -17,8 +17,6 @@ jobs:
         - sudo dpkg -i vagrant_2.2.9_x86_64.deb
         - sudo vagrant plugin install vagrant-libvirt vagrant-scp vagrant-reload
       script:
-        - touch salt/roots/formulas/openfortivpn-formula/openfortivpn/files/secrets/mycert.crt
-        - touch salt/roots/formulas/openfortivpn-formula/openfortivpn/files/secrets/mycert.key
         - echo '{"openfortivpn":{"build":{"username":"vagrant"},"certificate":{"crtfile":"mycert.crt","keyfile":"mycert.key"},"server":{"host":"172.1.1.1","port":443,"certdigest":"36d91cf360b272163273f12dab5a66806895cf4328c32f29b4ddb35cdab89fb9"}}}' > salt/roots/pillar/openfortivpn.sls
         - travis_wait sudo vagrant up --provider=libvirt openfortivpn-ubuntu1804
         - travis_wait sudo vagrant ssh openfortivpn-ubuntu1804 -- sudo salt-call state.sls openfortivpn.package
