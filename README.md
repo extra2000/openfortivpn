@@ -134,10 +134,10 @@ $ sudo salt-call state.sls openfortivpn
 
 ## Allow host to use VPN connections from Vagrant box
 
-Suppose that your Vagrant box IP address is `192.168.121.2`, execute the following commands on the minion:
+Suppose that your Vagrant box IP address is `192.168.121.2`, execute the following commands on the salt master:
 ```
-$ sudo iptables -t nat -A POSTROUTING -s 192.168.121.2 -j MASQUERADE
-$ sudo sysctl -w net.ipv4.ip_forward=1
+$ sudo salt 'MINION-ID' iptables.append nat POSTROUTING rule='-s 192.168.121.2 -j MASQUERADE'
+$ sudo salt 'MINION-ID' sysctl.assign net.ipv4.ip_forward 1
 ```
 
 Let's say if you want to SSH to `172.168.100.64` host, execute the following `ip route` command on host:
@@ -148,12 +148,12 @@ $ sudo ip route add 172.168.0.0/16 via 192.168.121.2
 
 ## Allow other machines to use VPN connection
 
-Suppose that your minion's LAN IP address is `192.168.1.2` and the other machine that you want to give VPN access is `192.168.1.10`
+Suppose that your minion's LAN IP address is `192.168.1.2` and the other machine that you want to give VPN access is `192.168.1.10`.
 
-On the minion, execute the following command:
+Execute the following command on the salt master:
 ```
-$ sudo iptables -t nat -A POSTROUTING -s 192.168.1.10 -j MASQUERADE
-$ sudo sysctl -w net.ipv4.ip_forward=1
+$ sudo salt 'MINION-ID' iptables.append nat POSTROUTING rule='-s 192.168.1.10 -j MASQUERADE'
+$ sudo salt 'MINION-ID' sysctl.assign net.ipv4.ip_forward 1
 ```
 
 Let's say if you want to SSH to `172.168.100.64` from the other machine, execute the same `ip route` command as above on the machine:
