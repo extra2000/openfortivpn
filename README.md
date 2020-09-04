@@ -35,7 +35,7 @@ $ openssl x509 -in /tmp/myfortigate.cert -fingerprint -sha256 -noout | awk '{pri
 
 ## Prepare SaltStack pillar for OpenFortiVPN
 
-Create `salt/roots/pillar/openfortivpn.sls` file as shown in example below. Use your own `certificate` and `server`:
+Create `salt/roots/pillar/openfortivpn.sls` file as shown in example below. Use your own `certificate`, `server`, and `masquerade` source IP addresses:
 ```
 openfortivpn:
   build:
@@ -47,6 +47,10 @@ openfortivpn:
     host: 172.1.1.1
     port: 443
     certdigest: 36d91cf360b272163273f12dab5a66806895cf4328c32f29b4ddb35cdab89fb9
+  masquerade:
+    - 192.168.121.2
+    - 192.168.100.0/24
+    - 192.168.20.5
 ```
 
 
@@ -132,29 +136,9 @@ $ sudo salt-call state.sls openfortivpn
 ```
 
 
-## Allow host to use VPN connections from Vagrant box
-
-Suppose that your Vagrant box IP address is `192.168.121.2`, execute the following commands on the salt master:
-```
-$ sudo salt 'MINION-ID' iptables.append nat POSTROUTING rule='-s 192.168.121.2 -j MASQUERADE'
-$ sudo salt 'MINION-ID' sysctl.assign net.ipv4.ip_forward 1
-```
-
-Let's say if you want to SSH to `172.168.100.64` host, execute the following `ip route` command on host:
-```
-$ sudo ip route add 172.168.0.0/16 via 192.168.121.2
-```
-
-
 ## Allow other machines to use VPN connection
 
 Suppose that your minion's LAN IP address is `192.168.1.2` and the other machine that you want to give VPN access is `192.168.1.10`.
-
-Execute the following command on the salt master:
-```
-$ sudo salt 'MINION-ID' iptables.append nat POSTROUTING rule='-s 192.168.1.10 -j MASQUERADE'
-$ sudo salt 'MINION-ID' sysctl.assign net.ipv4.ip_forward 1
-```
 
 Let's say if you want to SSH to `172.168.100.64` from the other machine, execute the same `ip route` command as above on the machine:
 ```
