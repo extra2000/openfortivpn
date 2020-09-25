@@ -18,6 +18,13 @@
         {"type": "ci", "release": "patch"}
       ]
     }],
+    ['@semantic-release/changelog', {
+      changelogFile: 'CHANGELOG.md',
+      changelogTitle: '# Changelog',
+    }],
+    ["@semantic-release/git", {
+      "assets": ["CHANGELOG.md"]
+    }],
     ["@semantic-release/release-notes-generator", {
       "preset": "conventionalcommits",
       "presetConfig": {
