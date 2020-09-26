@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.2.11](https://github.com/extra2000/openfortivpn/compare/v1.2.10...v1.2.11) (2020-09-26)
+
+
+### Maintenance
+
+* **openfortivpn-formula:** Update from v1.1.1 to v1.1.4 ([732aa6b](https://github.com/extra2000/openfortivpn/commit/732aa6b093f2995e3a7817abd53d1a0239c57ed5))
+
 ### [1.2.10](https://github.com/extra2000/openfortivpn/compare/v1.2.9...v1.2.10) (2020-09-26)
 
 
