@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.2.13](https://github.com/extra2000/openfortivpn-box/compare/v1.2.12...v1.2.13) (2020-10-02)
+
+
+### Continuous Integrations
+
+* **semantic-release:** Add fix type ([39a4d7c](https://github.com/extra2000/openfortivpn-box/commit/39a4d7c21f44d741550266d99f7de1b6ee1c9779))
+
+
+### Maintenance
+
+* **openfortivpn-formula:** Patch updates ([db1cfa3](https://github.com/extra2000/openfortivpn-box/commit/db1cfa374c173c0757574331be49faf8384a87f9))
+
 ### [1.2.12](https://github.com/extra2000/openfortivpn/compare/v1.2.11...v1.2.12) (2020-10-01)
 
 
