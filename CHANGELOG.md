@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.2.14](https://github.com/extra2000/openfortivpn-box/compare/v1.2.13...v1.2.14) (2020-10-04)
+
+
+### Continuous Integrations
+
+* **semantic-release:** Fix patch updates with BREAKING CHANGE doesn't trigger major release ([4ec94df](https://github.com/extra2000/openfortivpn-box/commit/4ec94df50542691acc13b022c500c34c49d6cc87))
+
+
+### Maintenance
+
+* **openfortivpn-formula:** Patch updates ([fda53e3](https://github.com/extra2000/openfortivpn-box/commit/fda53e3202312defb5d3848acf0c728120c15c72))
+
 ### [1.2.13](https://github.com/extra2000/openfortivpn-box/compare/v1.2.12...v1.2.13) (2020-10-02)
 
 
