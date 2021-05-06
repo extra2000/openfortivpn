@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.2.15](https://github.com/extra2000/openfortivpn-box/compare/v1.2.14...v1.2.15) (2021-05-06)
+
+
+### Code Refactoring
+
+* **vagrant:** Remove CentOS 7 ([e91c7ac](https://github.com/extra2000/openfortivpn-box/commit/e91c7aca89d677ee7ebe1b8b5badfce11622db0e))
+
+
+### Fixes
+
+* **vagrant:** Remove invalid provisioning instructions in Ubuntu 1804 Vagrant file for Virtualbox provider ([4e54ee9](https://github.com/extra2000/openfortivpn-box/commit/4e54ee95900e495c5cf726ee9642325b288ce41b))
+
 ### [1.2.14](https://github.com/extra2000/openfortivpn-box/compare/v1.2.13...v1.2.14) (2020-10-04)
 
 
