@@ -9,7 +9,7 @@ install:
   - git submodule init
   - git submodule update
 build_script:
-  - echo '{"openfortivpn":{"build":{"username":"vagrant"},"certificate":{"crtfile":"mycert.crt","keyfile":"mycert.key"},"server":{"host":"172.1.1.1","port":443,"certdigest":"36d91cf360b272163273f12dab5a66806895cf4328c32f29b4ddb35cdab89fb9"}}}' > salt/roots/pillar/openfortivpn.sls
+  - cp -v salt/roots/pillar/openfortivpn.sls.example salt/roots/pillar/openfortivpn.sls
   - sudo vagrant up --provider=libvirt openfortivpn-ubuntu1804
   - sudo vagrant ssh openfortivpn-ubuntu1804 -- sudo salt-call state.sls openfortivpn.package
   - sudo vagrant ssh openfortivpn-ubuntu1804 -- sudo salt-call state.sls openfortivpn.config
