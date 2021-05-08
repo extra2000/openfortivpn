@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+
+openfortivpn:
+  lookup:
+    build:
+      username: vagrant
+    certificate:
+      crtfile: mycert.crt
+      keyfile: mycert.key
+    server:
+      host: 172.1.1.1
+      port: 443
+      certdigest: 36d91cf360b272163273f12dab5a66806895cf4328c32f29b4ddb35cdab89fb9
+    masquerade:
+      - 192.168.121.2
+      - 192.168.100.0/24
+      - 192.168.20.5
