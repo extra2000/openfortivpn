@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.0.0](https://github.com/extra2000/openfortivpn-box/compare/v1.2.15...v2.0.0) (2021-05-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **openfortivpn-formula:** Submodule `openfortivpn-formula` has major changes and `salt/roots/pillar/openfortivpn.sls.example` structure has changed.
+
+### Features
+
+* **openfortivpn-formula:** Upgrade to `v2.0.0` ([a3a9c19](https://github.com/extra2000/openfortivpn-box/commit/a3a9c19c195a0b2df7db6ea617a6b823ac60fd96))
+
+
+### Continuous Integrations
+
+* **AppVeyor:** Add `semantic-release` bot ([452a006](https://github.com/extra2000/openfortivpn-box/commit/452a00680188f01a1ea6bc4397fb4e00d995d002))
+* **AppVeyor:** Simplify `salt/roots/pillar/openfortivpn.sls` file creation ([70560e9](https://github.com/extra2000/openfortivpn-box/commit/70560e9f9f645e22082087e988569fb798e6b0c4))
+* **TravisCI:** Remove TravisCI ([e87d936](https://github.com/extra2000/openfortivpn-box/commit/e87d93685d45dec03b3045464de62af8ed4e498f))
+
+
+### Documentations
+
+* **README:** Remove TravisCI badge ([beab4a0](https://github.com/extra2000/openfortivpn-box/commit/beab4a0cc2546d8f8a21836751148ba821ff5fae))
+* **README:** Simplify `salt/roots/pillar/openfortivpn.sls` file creation ([98788ee](https://github.com/extra2000/openfortivpn-box/commit/98788eef5d18d2940c06c192bdce0f75b791d68f))
+
 ### [1.2.15](https://github.com/extra2000/openfortivpn-box/compare/v1.2.14...v1.2.15) (2021-05-06)
 
 
