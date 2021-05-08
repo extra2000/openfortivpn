@@ -35,22 +35,9 @@ $ openssl x509 -in /tmp/myfortigate.cert -fingerprint -sha256 -noout | awk '{pri
 
 ## Prepare SaltStack pillar for OpenFortiVPN
 
-Create `salt/roots/pillar/openfortivpn.sls` file as shown in example below. Use your own `certificate`, `server`, and `masquerade` source IP addresses:
+Create `salt/roots/pillar/openfortivpn.sls` based on the example file and then use your own `certificate`, `server`, and `masquerade` source IP addresses:
 ```
-openfortivpn:
-  build:
-    username: vagrant
-  certificate:
-    crtfile: mycert.crt
-    keyfile: mycert.key
-  server:
-    host: 172.1.1.1
-    port: 443
-    certdigest: 36d91cf360b272163273f12dab5a66806895cf4328c32f29b4ddb35cdab89fb9
-  masquerade:
-    - 192.168.121.2
-    - 192.168.100.0/24
-    - 192.168.20.5
+$ cp -v salt/roots/pillar/openfortivpn.sls.example salt/roots/pillar/openfortivpn.sls
 ```
 
 
