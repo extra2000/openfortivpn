@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0](https://github.com/extra2000/openfortivpn-box/compare/v2.0.0...v2.1.0) (2021-05-20)
+
+
+### Features
+
+* **openfortivpn-formula:** add authentication without certificate into `salt/roots/pillar/openfortivpn.sls.example` ([af10f0d](https://github.com/extra2000/openfortivpn-box/commit/af10f0d361c72ad0824094f8b2c34841e301678b))
+* **openfortivpn-formula:** upgrade from `v2.0.0` to `v2.1.0` ([89897ff](https://github.com/extra2000/openfortivpn-box/commit/89897ffdba609f2287fc6fe38915be4e8fa11ac6))
+
+
+### Code Refactoring
+
+* **gitignore:** ignore all non related pillar files by default ([2ffdef3](https://github.com/extra2000/openfortivpn-box/commit/2ffdef3644ca2d125ac7dc8c70f872db7c0ca98e))
+
 ## [2.0.0](https://github.com/extra2000/openfortivpn-box/compare/v1.2.15...v2.0.0) (2021-05-08)
 
 
