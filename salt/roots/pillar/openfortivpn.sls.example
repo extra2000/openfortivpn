@@ -3,9 +3,15 @@
 
 openfortivpn:
   lookup:
+    use_certificate: true
     build:
       username: vagrant
+    login:
+      # if use_certificate: false
+      username:
+      password:
     certificate:
+      # if use_certificate: true
       crtfile: mycert.crt
       keyfile: mycert.key
     server:
