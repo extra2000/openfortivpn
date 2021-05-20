@@ -1,2 +1,3 @@
 .vagrant
-salt/roots/pillar/openfortivpn.sls
+salt/roots/pillar/*
+!salt/roots/pillar/openfortivpn.sls.example
